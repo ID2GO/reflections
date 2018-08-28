@@ -1,0 +1,318 @@
+﻿Git command line:
+
+$ sudo add-apt-repository ppa:git-core/ppa
+
+
+$ mv Downloads/git-completion.bash git-completion.bash
+$ mv Downloads/git-prompt.sh git-prompt.sh
+$ git config --global color.ui auto
+
+
+
+
+$ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+$ git config --global core.editor "subl -n -w"
+$ git config --global push.default upstream
+$ git config --global merge.conflictstyle diff3
+
+
+$ mkdir "ExempleFolder" && cd "$_" //(Create folder/repository & cd into it)
+$ rmdir ‘ExempleFolder’ //(removes the folder/repository)
+$ cd AndroidStudioProjects/Downloads/asteroids
+
+// To clone an online repository from GitHub (cd into the destination folder & run:)
+$ git clone  https://github.com/udacity/asteroids.git
+
+
+// To see remote branches
+$ git remote
+
+
+// To change directory
+$ cd 	// (going back to home folder)
+// To change dir into an other folder/directory
+$ cd AndroidStudioProjects/Stock2Go
+
+// Directory path after specific cd
+~/AndroidStudioProjects/Stock2Go$
+
+
+For viewing changes in files in working directory:
+$ git log
+
+
+For viewing changes in multiple files:
+$ git log --stat
+
+
+For reverting a commit (excluding specific changes made in a commit) but keeping the changes of later commits
+$ git revert (commit id)
+
+
+To discard changes from either Working directory or Staging area:
+$ git reset --hard        // This change is irreversible!!!
+
+
+press “q” to stop log output & return to command line
+
+
+To see the Git version:
+$ git --version
+
+
+To see the status of the files (committed or uncommitted) in the folder:
+$ git statusBash make dir & cd dir command:
+$ mkdir "TestProject" && cd "$_"
+
+
+Creating a new repository:
+$ git init         to create .git folder/directory
+
+
+Adding file(s) to staging area before committing them to repository:
+$ git add (file_name.extention)
+
+
+To add all files in folder:
+$ git add .
+
+
+Committing file & comment to repository:
+$ git commit -m 'added some reflection on file changes'
+
+
+the editor you chose will appear as soon as you run $ git commit         and allow you to write a commit message.
+
+
+
+
+After having saved changes but before having committed the changes, like to verify after i.e. a coffee break, to compare the Working directoy to the Staging area and show the changes made but that were not yet added to the staging area:
+$ git diff without id’s will show the changes in the intermittant state.
+
+
+To compare the changes in the Staging area to the most recent commit:
+$ git diff --staged
+
+
+
+
+You can also specify a commit message via the command line by running $ git commit -m "Commit message"         instead of just $ git commit. It's still a good idea to get an editor set up, since this will make it easier to write long commit messages that fully describe the change.
+
+
+
+
+
+
+Showing the branches:
+$ git branch (shows * master, * = branch head)
+
+
+Adding branches:
+$ git branch easy-mode (adds easy-mode)
+
+
+$ git branch (shows easy-mode & * master)
+
+
+Checking out diff branch:
+$ git checkout easy-mode (msg: Switched to branch ‘easy-mode’)
+
+
+$ git branch (shows * easy-mode & master)
+
+
+To checkout a new remote branch:
+$ git checkout coins 
+(Shows: Branch 'coins' set up to track remote branch 'coins' from 'origin'.
+Switched to a new branch 'coins')
+
+
+To show the changes in a graphic way while only showing 1 line:
+$ git log --graph --oneline master coins
+
+
+
+
+When in “ detached HEAD” state If you want to create a new branch to retain commits you create, you can do so with -b with the checkout command again:
+$ git checkout -b new-branch-name
+
+
+‘ $ git checkout -b new-branch-name’  is is short for: 
+1 $ git branch new-branch-name
+2 $ git checkout new-branch-name
+‘Switched to branch new-branch-name’ 
+$ 
+Merging: (branch2 to master(branch1)
+git merge branch1 branch2
+
+
+To see the difference between a commit and its parent after having merged enter the following command:
+$ git show commit ID
+
+
+To delete a branch (deleting the label, not the commits):
+$ git branch -d branch-name
+
+
+Merge conflict
+If you get a message like this
+Auto-merging file-name.extension
+CONFLICT (content): Merge conflict in file-name.extension
+Automatic merge failed; fix conflicts and then commit the result.
+
+then your files were not in the same state as Caroline's when you started the merge. To fix this, complete the following steps:
+1. Restore your files to their state before you started the merge by running 
+$ git merge --abort
+2. Double check the state of your files. Run 
+$ git log 
+while the master branch is checked out. Find the conflicting file & lines and resolve the conflicting code. The line should be indented to the same level as the line below it using only spaces (no tabs), and the line should have no spaces after it.
+3. Once your file is in the correct state, create a new commit with your changes.
+4. Try the merge again.
+Merge conflict (Newline characters between Windows and Unix systems)
+Context: Whenever we hit the "Enter" key on the keyboard, we are actually telling the computer to insert an invisible character into our text file to indicate to the computer that there should be a new line. Unix systems adds one character called the "line feed" character or LF or \n while Windows systems adds two characters, "carriage return" and "line feed" or CRLF or \r\n.
+Caroline's files have LF because her files were edited on Mac OSX, which uses LF. If a Windows user were to edit Caroline's files, the Windows text editor might convert all LF to CRLF to make editing files possible. When the Windows user merges her file with Caroline's files, a merge conflict will result due to the different LF and CRLF characters.
+To fix this, Windows users should set the global autocrlf attribute to true: 
+$ git config --global core.autocrlf true. 
+More information can be found here: https://help.github.com/articles/dealing-with-line-endings/#platform-all
+
+Comparing a commit to its parent
+The command to compare a commit to its parent is: 
+$ git show commit_id
+
+
+Git command review
+Compare two commits, printing each line that is present in one commit but not the other.
+$ git diff commit-id-1 commid-id-2        
+will do this. It takes two arguments - the two commit ids to compare.
+
+
+Make a copy of an entire Git repository, including the history, onto your own computer.
+$ git clone URL
+will do this. It takes one argument - the url of the repository to copy.
+
+
+Temporarily reset all files in a directory to their state at the time of a specific commit.
+$ git checkout master (or something else)
+will do this. It takes one argument - the commit ID to restore.
+
+
+Show the commits made in this repository, starting with the most recent.
+$ git log         will do this. It doesn't take any arguments.
+
+
+
+
+Upgrade instructions:
+https://git-scm.com/downloads
+
+
+Cloning a Repository
+To clone a repository, run 
+$ git clone URL (followed by a space and the repository URL)
+
+Asteroids URL
+Use the following url to clone the Asteroids repository: 
+https://github.com/udacity/asteroids.git
+
+
+Getting Colored Output
+To get colored diff output, run git config --global color.ui auto
+
+
+
+
+Reconstructing a final file
+Suppose you had a file, called file.txt, and you made a copy of this file, named it updated.txt and made some changes to it. Next, suppose you ran diff -u file.txt updated.txt.
+The contents of the original file and the output of the diff are below. Given this information, it is possible to reconstruct what the final contents of updated.txt must have been. On the next screen, enter these contents.
+Git Errors and Warnings Solution
+Should not be doing an octopus
+Octopus is a strategy Git uses to combine many different versions of code together. This message can appear if you try to use this strategy in an inappropriate situation.
+You are in 'detached HEAD' state
+HEAD is what Git calls the commit you are currently on. You can “detach” the HEAD by switching to a previous commit, which we’ll see in the next video. Despite what it sounds like, it’s actually not a bad thing to detach the HEAD. Git just warns you so that you’ll realize you’re doing it.
+
+
+
+
+
+
+
+
+Set up Password Caching for command line
+Every time you send changes to GitHub via the command line, you'll need to type your password to prove that you have permission to modify the repository. This can get annoying quickly, so many people like to set up password caching, which will let you type your password once and have it auto-filled on that computer in the future. To do this, follow the instructions here. If you're using Windows and you followed our Git installation instructions earlier, you're using msysgit, so you can follow the instructions for msysgit.
+
+
+----------------------------------------------------------
+For Linux:
+
+
+https://help.github.com/articles/caching-your-github-password-in-git/
+Managing Remotes / Caching your GitHub password in Git
+Caching your GitHub password in Git
+* mac
+* windows
+* linux
+* all
+If you're cloning GitHub repositories using HTTPS, you can use a credential helper to tell Git to remember your GitHub username and password every time it talks to GitHub.
+If you clone GitHub repositories using SSH, then you authenticate using SSH keys instead of a username and password. For help setting up an SSH connection, see Generating an SSH Key.
+Tip: You need Git 1.7.10 or newer to use the credential helper.
+Turn on the credential helper so that Git will save your password in memory for some time. By default, Git will cache your password for 15 minutes.
+1. In Terminal, enter the following:
+$ git config --global credential.helper cache
+# Set git to use the credential memory cache
+
+1. To change the default password cache timeout, enter the following:
+$ git config --global credential.helper 'cache --timeout=3600'
+# Set the cache to timeout after 1 hour (setting is in seconds)
+------------------------------------------------------------
+
+
+For MAC:
+Managing Remotes / Caching your GitHub password in Git
+Caching your GitHub password in Git
+* mac
+* windows
+* linux
+* all
+If you're cloning GitHub repositories using HTTPS, you can use a credential helper to tell Git to remember your GitHub username and password every time it talks to GitHub.
+If you clone GitHub repositories using SSH, then you authenticate using SSH keys instead of a username and password. For help setting up an SSH connection, see Generating an SSH Key.
+Tips:
+* You need Git 1.7.10 or newer to use the osxkeychain credential helper.
+* If you installed Git using Homebrew, the osxkeychain helper will already be installed.
+* If you're running Mac OS X 10.7 and above and you installed Git through Apple's Xcode Command Line Tools, then osxkeychain helper is automatically included in your Git installation.
+Install Git and the osxkeychain helper and tell Git to use it.
+1. Find out if Git and the osxkeychain helper are already installed:
+$ git credential-osxkeychain
+# Test for the cred helper
+Usage: git credential-osxkeychain <get|store|erase>
+
+1. If the osxkeychain helper isn't installed and you're running OS X version 10.9 or above, your computer will prompt you to download it as a part of the Xcode Command Line Tools:
+$ git credential-osxkeychain
+xcode-select: note: no developer tools were found at '/Applications/Xcode.app',
+requesting install. Choose an option in the dialog to download the command line developer tools.
+
+1. Alternatively, you can install Git and the osxkeychain helper by using Homebrew:
+$ brew install git
+
+1. Tell Git to use osxkeychain helper using the global credential.helper config:
+$ git config --global credential.helper osxkeychain
+# Set git to use the osxkeychain credential helper
+
+The next time you clone an HTTPS URL that requires a password, you'll be prompted for your username and password, and to grant access to the OSX keychain. After you've done this, the username and password are stored in your keychain and you won't be required to type them in to Git again.
+
+
+Creating a repository:
+Quick setup — if you’ve done this kind of thing before
+HTTPS: https://github.com/ID2GO/reflections.git or 
+SSH: git@github.com:ID2GO/reflections.git
+We recommend every repository include a README, LICENSE, and .gitignore.
+…or create a new repository on the command line
+echo "# reflections" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/ID2GO/reflections.git
+git push -u origin master
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/ID2GO/reflections.git
+git push -u origin master
