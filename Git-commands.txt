@@ -316,3 +316,19 @@ git push -u origin master
 …or push an existing repository from the command line
 git remote add origin https://github.com/ID2GO/reflections.git
 git push -u origin master
+
+git remote (shows response: origin)
+git remote -v (-v stands for verbose = more info about URL for fetch & push)
+origin	https://github.com/ID2GO/reflections.git (fetch)
+origin	https://github.com/ID2GO/reflections.git (push)
+
+To sync an edited remote branch with the local branch:
+git pull origin master
+
+To fork a repository:
+On GitHub go to repository you want to collaborate with, klick fork. Got to your own GitHub work space & copy the clone URL.
+Do in git: $ git clone URL
+
+To setup collaboration:
+On GitHub, in selected forked repository got to settings & click & add collaborators by entering user name
+
